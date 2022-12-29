@@ -10,7 +10,7 @@ class CustomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       color: Colors.black,
-      child: Container(
+      child: SizedBox(
         height: 70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,4 +1,6 @@
 //Routes Names
+import 'package:ecommerce_app/models/category_model.dart';
+
 import '/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +23,11 @@ Route<dynamic> onGeneratedRoute(RouteSettings settings) {
     case productScreen:
       return MaterialPageRoute(builder: (context) => const ProductScreen());
     case catalogScreen:
-      return MaterialPageRoute(builder: (context) => const CatalogScreen());
+      return MaterialPageRoute(
+        builder: (context) => CatalogScreen(
+          category: settings.arguments as Category,
+        ),
+      );
     case wishlistScreen:
       return MaterialPageRoute(builder: (context) => const WishListScreen());
     default:
