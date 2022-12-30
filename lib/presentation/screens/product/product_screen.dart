@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/wishlist/wish_list_bloc.dart';
 import '/presentation/routes/app_router.dart' as routes;
 import '../../../models/model.dart';
 import '../../widgets/widgets.dart';
@@ -22,7 +24,7 @@ class ProductScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
-        child: Container(
+        child: SizedBox(
           height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,7 +37,8 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => BlocProvider.of<WishlistBloc>(context)
+                    .add(AddWishListProduct(product: product)),
                 icon: const Icon(
                   Icons.favorite,
                   color: Colors.white,

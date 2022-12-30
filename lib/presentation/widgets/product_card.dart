@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/bloc/wishlist/wish_list_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '/presentation/routes/app_router.dart' as route;
 
 import '../../models/model.dart';
@@ -6,14 +8,19 @@ import '../../models/model.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final double widthFactor;
+  final double leftPosition;
+  final bool isWishlist;
   const ProductCard({
     Key? key,
+    this.isWishlist = false,
+    this.leftPosition = 5.0,
     this.widthFactor = 2.5,
     required this.product,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final widthValue = MediaQuery.of(context).size.width / widthFactor;
     return InkWell(
       onTap: () => Navigator.pushNamed(
         context,
@@ -25,7 +32,7 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width / widthFactor,
+              width: widthValue,
               height: 150,
               child: Image.network(
                 product.imageUrl,
@@ -34,8 +41,9 @@ class ProductCard extends StatelessWidget {
             ),
             Positioned(
               top: 60,
+              left: leftPosition,
               child: Container(
-                width: MediaQuery.of(context).size.width / 2.5,
+                width: widthValue - 5 - leftPosition,
                 height: 80,
                 decoration: BoxDecoration(
                   color: Colors.black.withAlpha(50),
@@ -44,9 +52,9 @@ class ProductCard extends StatelessWidget {
             ),
             Positioned(
               top: 65,
-              left: 5,
+              left: leftPosition + 5,
               child: Container(
-                width: MediaQuery.of(context).size.width / 2.5 - 10,
+                width: widthValue - 15 - leftPosition,
                 height: 70,
                 decoration: const BoxDecoration(color: Colors.black),
                 child: Padding(
@@ -84,7 +92,29 @@ class ProductCard extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                      )
+                      ),
+                      isWishlist
+                          ? Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  BlocProvider.of<WishlistBloc>(context).add(
+                                    RemoveWishListProduct(
+                                      product: product,
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Added to your Wishlist !'),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          : const SizedBox(),
                     ],
                   ),
                 ),
