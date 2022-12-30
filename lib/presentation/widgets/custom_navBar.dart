@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/presentation/routes/app_router.dart' as route;
+import '/presentation/routes/app_router.dart' as routes;
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({
@@ -17,7 +17,7 @@ class CustomNavBar extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, route.homeScreen);
+                Navigator.pushNamed(context, routes.homeScreen);
               },
               icon: const Icon(
                 Icons.home,
@@ -26,7 +26,7 @@ class CustomNavBar extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, route.cartScreen);
+                Navigator.pushNamed(context, routes.cartScreen);
               },
               icon: const Icon(
                 Icons.shopping_cart,
@@ -35,7 +35,7 @@ class CustomNavBar extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, route.profileScreen);
+                Navigator.pushNamed(context, routes.profileScreen);
               },
               icon: const Icon(
                 Icons.person,
