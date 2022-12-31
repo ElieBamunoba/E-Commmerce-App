@@ -78,13 +78,24 @@ class CartScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
+                      //! The list of the products added in the cart
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.54,
                         child: ListView.builder(
-                            itemCount: state.cart.products.length,
+                            itemCount: state.cart
+                                .productQuantity(state.cart.products)
+                                .keys
+                                .length,
                             itemBuilder: (context, index) {
                               return CartProductCard(
-                                product: state.cart.products[index],
+                                productQuantity: state.cart
+                                    .productQuantity(state.cart.products)
+                                    .values
+                                    .elementAt(index),
+                                product: state.cart
+                                    .productQuantity(state.cart.products)
+                                    .keys
+                                    .elementAt(index),
                               );
                             }),
                       ),

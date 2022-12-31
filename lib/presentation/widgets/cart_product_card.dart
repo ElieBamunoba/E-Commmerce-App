@@ -6,7 +6,12 @@ import '../../models/model.dart';
 
 class CartProductCard extends StatelessWidget {
   final Product product;
-  const CartProductCard({Key? key, required this.product}) : super(key: key);
+  final int productQuantity;
+  const CartProductCard({
+    Key? key,
+    required this.product,
+    required this.productQuantity,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,8 +58,8 @@ class CartProductCard extends StatelessWidget {
                     icon: const Icon(Icons.remove_circle),
                   ),
                   Text(
-                    '1',
-                    style: Theme.of(context).textTheme.headline5,
+                    '$productQuantity',
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                   IconButton(
                     onPressed: () {

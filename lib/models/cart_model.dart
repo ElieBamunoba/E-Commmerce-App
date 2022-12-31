@@ -6,6 +6,20 @@ class Cart extends Equatable {
   final List<Product> products;
   const Cart({this.products = const <Product>[]});
 
+//!the function mapping the car products to debuplicate the product in cart screen
+// avoid the same product to appear twice in the cart screen
+  Map productQuantity(product) {
+    var quantity = {};
+    for (var product in products) {
+      if (!quantity.containsKey(product)) {
+        quantity[product] = 1;
+      } else {
+        quantity[product] += 1;
+      }
+    }
+    return quantity;
+  }
+
   double deliveryFee(subtotal) {
     if (subtotal >= 30.0) {
       return 0.0;
