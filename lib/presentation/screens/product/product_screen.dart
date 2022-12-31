@@ -37,8 +37,16 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () => BlocProvider.of<WishlistBloc>(context)
-                    .add(AddWishListProduct(product: product)),
+                onPressed: () {
+                  BlocProvider.of<WishlistBloc>(context)
+                      .add(AddWishListProduct(product: product));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          '${product.name} has been added to your Wishlist.'),
+                    ),
+                  );
+                },
                 icon: const Icon(
                   Icons.favorite,
                   color: Colors.white,

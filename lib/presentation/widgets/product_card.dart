@@ -103,8 +103,9 @@ class ProductCard extends StatelessWidget {
                                     ),
                                   );
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Added to your Wishlist !'),
+                                    SnackBar(
+                                      content: Text(
+                                          '${product.name} has be removed from your Wishlist'),
                                     ),
                                   );
                                 },
