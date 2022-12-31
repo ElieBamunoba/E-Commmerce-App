@@ -8,7 +8,7 @@ class Product extends Equatable {
   final bool isRecommended;
   final bool isPopular;
 
-  Product({
+  const Product({
     required this.name,
     required this.category,
     required this.imageUrl,
@@ -27,7 +27,7 @@ class Product extends Equatable {
         isPopular,
       ];
 
-  static List<Product> products = [
+  static List<Product> products = const [
     Product(
       // id: '1',
       name: 'Soft Drink #1',

@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/bloc/wishlist/wish_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/cart/cart_bloc.dart';
 import '/presentation/routes/app_router.dart' as route;
 
 import '../../models/model.dart';
@@ -84,14 +85,46 @@ class ProductCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                      BlocBuilder<CartBloc, CartState>(
+                        builder: (context, state) {
+                          if (state is CartLoading) {
+                            return const Expanded(
+                              child: IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
+                          } else if (state is CartLoaded) {
+                            return Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<CartBloc>()
+                                      .add(AddProductToCart(product: product));
+                                  // BlocProvider.of<CartBloc>(context)
+                                  //     .add(AddProductToCart(product: product));
+                                },
+                                icon: const Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const Expanded(
+                              child: IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
+                          }
+                        },
                       ),
                       isWishlist
                           ? Expanded(

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/cart/cart_bloc.dart';
 import '../../../bloc/wishlist/wish_list_bloc.dart';
 import '/presentation/routes/app_router.dart' as routes;
 import '../../../models/model.dart';
@@ -53,7 +54,12 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<CartBloc>()
+                      .add(AddProductToCart(product: product));
+                  Navigator.pushNamed(context, routes.cartScreen);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                 ),

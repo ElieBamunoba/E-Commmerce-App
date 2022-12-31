@@ -1,10 +1,10 @@
 import 'package:ecommerce_app/bloc/wishlist/wish_list_bloc.dart';
-import 'package:ecommerce_app/models/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/presentation/routes/app_router.dart' as route;
 import '/presentation/theme/theme.dart';
+import 'bloc/cart/cart_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (_) => WishlistBloc()..add(StartWishList()),
+        ),
+        BlocProvider(
+          create: (_) => CartBloc()..add(StartCart()),
         )
       ],
       child: MaterialApp(
