@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/category/category_bloc.dart';
+import '../../../bloc/product/product_bloc.dart';
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -46,19 +47,44 @@ class HomeScreen extends StatelessWidget {
           const SectionTitle(
             title: 'RECOMMENDED',
           ),
-          ProductCarousel(
-            products: Product.products
-                .where((product) => product.isRecommended)
-                .toList(),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is ProductLoaded) {
+                return ProductCarousel(
+                  products: state.products
+                      .where((product) => product.isRecommended)
+                      .toList(),
+                );
+              } else {
+                return const Text('Something went wrong');
+              }
+            },
           ),
           //!Most popular
           const SectionTitle(
             title: 'MOST POPULAR',
           ),
-          ProductCarousel(
-            products:
-                Product.products.where((product) => product.isPopular).toList(),
-          )
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is ProductLoaded) {
+                return ProductCarousel(
+                  products: state.products
+                      .where((product) => product.isPopular)
+                      .toList(),
+                );
+              } else {
+                return const Text('Something went wrong');
+              }
+            },
+          ),
         ],
       ),
     );

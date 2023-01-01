@@ -34,7 +34,7 @@ class Product extends Equatable {
       imageUrl: snap['imageUrl'],
       price: snap['price'],
       isRecommended: snap['isRecommended'],
-      isPopular: snap[' isPopular'],
+      isPopular: snap['isPopular'],
     );
     return product;
   }

@@ -9,6 +9,14 @@ abstract class ProductState extends Equatable {
 
 class ProductLoading extends ProductState {}
 
-class ProductLoaded extends ProductState {}
+class ProductLoaded extends ProductState {
+  final List<Product> products;
 
-class ProductError extends ProductState {}
+  const ProductLoaded({
+    //initialy the list of produts is an empty list
+    this.products = const <Product>[],
+  });
+
+  @override
+  List<Object> get props => [products];
+}

@@ -20,5 +20,3 @@ class CategoryLoaded extends CategoryState {
   @override
   List<Object> get props => [categories];
 }
-
-class CategoryError extends CategoryState {}

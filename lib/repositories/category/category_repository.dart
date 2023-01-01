@@ -2,9 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:ecommerce_app/repositories/category/base_category_repository.dart';
-
 import '../../models/model.dart';
+import 'base_category_repository.dart';
 
 class CategoryRepository extends BaseCategoryRepository {
   //create an instace of the firebaseFirestore

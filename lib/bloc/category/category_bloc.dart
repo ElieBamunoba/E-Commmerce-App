@@ -11,7 +11,7 @@ part 'category_state.dart';
 
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final CategoryRepository _categoryRepository;
-  StreamSubscription? categpryStreamSubscription;
+  late StreamSubscription categoryStreamSubscription;
   CategoryBloc({required CategoryRepository categoryRepository})
       : _categoryRepository = categoryRepository,
         super(CategoryLoading()) {
@@ -20,7 +20,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   }
 
   void _onLoadCategories(event, Emitter<CategoryState> emit) async {
-    categpryStreamSubscription = _categoryRepository.getAllCategories().listen(
+    categoryStreamSubscription = _categoryRepository.getAllCategories().listen(
       (categories) {
         return add(
           UpdateCategories(categories: categories),

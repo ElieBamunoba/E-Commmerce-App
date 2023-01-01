@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '/presentation/routes/app_router.dart' as route;
 import '/presentation/theme/theme.dart';
 import 'bloc/cart/cart_bloc.dart';
+import 'bloc/product/product_bloc.dart';
+import 'repositories/product/poduct_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,12 @@ class MyApp extends StatelessWidget {
           create: (_) => CategoryBloc(categoryRepository: CategoryRepository())
             ..add(
               LoadCategories(),
+            ),
+        ),
+        BlocProvider(
+          create: (_) => ProductBloc(productRepository: ProductRepository())
+            ..add(
+              LoadProducts(),
             ),
         ),
       ],
