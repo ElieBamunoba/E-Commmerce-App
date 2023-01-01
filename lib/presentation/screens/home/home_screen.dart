@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/models/model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/category/category_bloc.dart';
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,17 +18,29 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: const CustomNavBar(),
       body: Column(
         children: [
-          CarouselSlider(
-            options: CarouselOptions(
-              autoPlay: true,
-              aspectRatio: 1.5,
-              viewportFraction: 0.9,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
-            ),
-            items: Category.categories
-                .map((category) => HeroCarouselCard(category: category))
-                .toList(),
+          BlocBuilder<CategoryBloc, CategoryState>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is CategoryLoaded) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    aspectRatio: 1.5,
+                    viewportFraction: 0.9,
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                  ),
+                  items: state.categories
+                      .map((category) => HeroCarouselCard(category: category))
+                      .toList(),
+                );
+              } else {
+                return const Text('Something went wrong');
+              }
+            },
           ),
           //!recommended product
           const SectionTitle(

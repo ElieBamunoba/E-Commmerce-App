@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/bloc/category/category_bloc.dart';
 import 'package:ecommerce_app/bloc/wishlist/wish_list_bloc.dart';
+import 'package:ecommerce_app/repositories/category/category_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +30,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => CartBloc()..add(StartCart()),
-        )
+        ),
+        BlocProvider(
+          create: (_) => CategoryBloc(categoryRepository: CategoryRepository())
+            ..add(
+              LoadCategories(),
+            ),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
