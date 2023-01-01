@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/bloc/wishlist/wish_list_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,8 +7,12 @@ import '/presentation/routes/app_router.dart' as route;
 import '/presentation/theme/theme.dart';
 import 'bloc/cart/cart_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
