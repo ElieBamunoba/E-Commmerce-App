@@ -67,7 +67,9 @@ class CheckoutScreen extends StatelessWidget {
               lable: 'Full Name',
               controller: cityController,
             ),
-            const SectionTitle(title: 'DELIVERY INFORMATION'),
+            const SectionTitle(
+              title: 'DELIVERY INFORMATION',
+            ),
             CustomInputTextField(
               context: context,
               lable: 'Address',
@@ -88,7 +90,30 @@ class CheckoutScreen extends StatelessWidget {
               lable: 'Zip Code',
               controller: zipCodeController,
             ),
-            const SectionTitle(title: 'ORDER SUMMARY'),
+            Container(
+              color: Colors.black,
+              height: 60,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'SELECT A PAYMENT METHOD',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3!
+                        .copyWith(color: Colors.white),
+                  ),
+                  const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  )
+                ],
+              ),
+            ),
+            const SectionTitle(
+              title: 'ORDER SUMMARY',
+            ),
             const OrderSummary(),
           ],
         ),
