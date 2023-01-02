@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class CustomInputTextField extends StatelessWidget {
   final String lable;
   final BuildContext context;
-  final TextEditingController controller;
+  final Function(String)? onChanged;
   const CustomInputTextField({
     Key? key,
     required this.lable,
-    required this.controller,
+    required this.onChanged,
     required this.context,
   }) : super(key: key);
 
@@ -27,7 +27,7 @@ class CustomInputTextField extends StatelessWidget {
           ),
           Expanded(
               child: TextFormField(
-            controller: controller,
+            onChanged: onChanged,
             decoration: const InputDecoration(
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
