@@ -10,6 +10,7 @@ const String profileScreen = '/profile';
 const String productScreen = '/product';
 const String wishlistScreen = '/wishlist';
 const String catalogScreen = '/catalog';
+const String checkoutScreen = '/checkout';
 
 //control pur page route flow
 Route<dynamic> onGeneratedRoute(RouteSettings settings) {
@@ -33,6 +34,8 @@ Route<dynamic> onGeneratedRoute(RouteSettings settings) {
       );
     case wishlistScreen:
       return MaterialPageRoute(builder: (context) => const WishListScreen());
+    case checkoutScreen:
+      return MaterialPageRoute(builder: (context) => const CheckoutScreen());
     default:
       throw ('This rout name does not exist');
   }

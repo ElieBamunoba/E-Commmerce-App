@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_app/models/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,8 +43,11 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           //!recommended product
-          const SectionTitle(
-            title: 'RECOMMENDED',
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: SectionTitle(
+              title: 'RECOMMENDED',
+            ),
           ),
           BlocBuilder<ProductBloc, ProductState>(
             builder: (context, state) {
@@ -65,8 +67,11 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           //!Most popular
-          const SectionTitle(
-            title: 'MOST POPULAR',
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: SectionTitle(
+              title: 'MOST POPULAR',
+            ),
           ),
           BlocBuilder<ProductBloc, ProductState>(
             builder: (context, state) {
