@@ -1,9 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-import '../../../bloc/category/category_bloc.dart';
-import '../../../bloc/product/product_bloc.dart';
+import '/bloc/bloc.dart';
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {

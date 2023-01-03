@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../bloc/checkout/checkout_bloc.dart';
+import '/bloc/bloc.dart';
 import '../../widgets/widgets.dart';
 import '/presentation/routes/app_router.dart' as routes;
 
