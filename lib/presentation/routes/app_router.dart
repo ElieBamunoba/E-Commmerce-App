@@ -1,9 +1,9 @@
-//Routes Names
 import 'package:ecommerce_app/models/model.dart';
 
 import '/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
 
+//Routes Names
 const String homeScreen = '/';
 const String cartScreen = '/card';
 const String profileScreen = '/profile';

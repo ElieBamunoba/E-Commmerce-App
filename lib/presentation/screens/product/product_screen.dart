@@ -1,11 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/cart/cart_bloc.dart';
-import '../../../bloc/wishlist/wish_list_bloc.dart';
-import '/presentation/routes/app_router.dart' as routes;
+import 'package:carousel_slider/carousel_slider.dart';
+
+import '/bloc/bloc.dart';
 import '../../../models/model.dart';
 import '../../widgets/widgets.dart';
+import '/presentation/routes/app_router.dart' as routes;
 
 class ProductScreen extends StatelessWidget {
   static Route route({required Product product}) {
